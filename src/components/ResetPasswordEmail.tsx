@@ -1,8 +1,12 @@
-import * as ReactDOMServer from "react-dom/server";
 import * as React from "react";
 
-const render = () => {
-  const body = ReactDOMServer.renderToString(
+interface Props {
+  resetKey: string;
+}
+
+const ResetPasswordEmail: React.FunctionComponent<Props> = ({ resetKey }) => {
+  const resetUrl = `https://hacknyu.org/reset?key=${resetKey}`;
+  return (
     <div
       style={{
         fontFamily: "mr-eaves-xl-modern, Helvetica, sans-serif",
@@ -38,7 +42,7 @@ const render = () => {
                     paddingLeft: "15px"
                   }}
                 >
-                  Confirmation Closing Soon!
+                  Reset Password
                 </h1>
               </div>
             </div>
@@ -46,30 +50,11 @@ const render = () => {
           <tr>
             <div style={{ padding: "40px", fontSize: "1.1em" }}>
               <p>
-                Wow! We're stunned by the sheer volume of applications that
-                we've received. Over 2000 people applied, setting a new record
-                for HackNYU.
+                Forgot your password? Click
+                <a href={resetUrl}> here </a> to
+                reset it.
+                Or copy this link {resetUrl} into your address bar.
               </p>
-              <p>
-                If you haven't already, please confirm your spot at HackNYU! We
-                will be closing the form in 24 hours, and you will be unable to
-                confirm that you are coming after that time. If you can no
-                longer make the event, please update your status on the
-                confirmation form.
-              </p>
-              <p>
-                By informing us that you cannot attend HackNYU, you help us out
-                so we can make room for more people who want to come. We are
-                reaching our capacity for the event, and we want to make sure
-                everyone who wants to come has a chance!
-              </p>
-              <p>
-                HackNYU 2019 is from February 15th to the 17th. It takes place
-                simultaneously in New York, Shanghai and Abu Dhabi over 48
-                hours. It is completely free, thanks to our wonderful sponsors
-                and volunteers.
-              </p>
-              <p>We hope to see you there!</p>
             </div>
           </tr>
           <tr>
@@ -91,7 +76,6 @@ const render = () => {
       </p>
     </div>
   );
-  return body;
 };
 
-export default render;
+export default ResetPasswordEmail;

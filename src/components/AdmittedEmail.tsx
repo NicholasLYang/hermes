@@ -1,8 +1,11 @@
-﻿import * as ReactDOMServer from "react-dom/server";
 import * as React from "react";
 
-const renderRejectedEmail = (name: string) => {
-  const body = ReactDOMServer.renderToString(
+interface Props {
+  name: string;
+}
+
+const AdmittedEmail: React.FunctionComponent<Props> = ({ name }) => {
+  return (
     <div
       style={{
         fontFamily: "mr-eaves-xl-modern, Helvetica, sans-serif",
@@ -19,38 +22,44 @@ const renderRejectedEmail = (name: string) => {
                 display: "flex",
                 position: "relative",
                 fontSize: "1.3em",
-                minHeight: "100px",
+                height: "100px",
+                // In case background image doesn't render
                 backgroundColor: "#57068c",
                 color: "white",
                 backgroundSize: "contain",
-                textAlign: "center",
                 backgroundImage:
                   "url('https://hacknyu.org/img/pattern-email.png')"
               }}
             >
-              <h1 style={{ paddingLeft: "10%" }}>
-                Thank You for Your Application
-              </h1>
+              <div
+                style={{
+                  position: "absolute",
+                  left: "50%",
+                  top: "50%",
+                  transform: "translate(-50%, -50%)"
+                }}
+              >
+                <h1 style={{ paddingLeft: "15px" }}> You're In! 🎉🎉🎉 </h1>
+              </div>
             </div>
           </tr>
           <tr>
             <div style={{ padding: "40px", fontSize: "1.1em" }}>
-              <p>{name ? ` Dear ${name}` : "Hello"},</p>
-              <p>Thank you for submitting your application to HackNYU.</p>
               <p>
-                We regret to inform you that, due to limited capacity, we are not
-                able to take any more participants for HackNYU 2019.
+                Congrats{name ? ` ${name}` : ""}! You've been accepted to
+                HackNYU 2019. Please{" "}
+                <a href="https://hacknyu.org/status">
+                  confirm your acceptance
+                </a>{" "}
+                by January 30th.
               </p>
               <p>
-                This year, we received over 2000 applications (our most ever) 
-                making us the largest university hackathon in New York!
+                HackNYU 2019 is from February 15th to the 17th. It takes place
+                simultaneously in New York, Shanghai and Abu Dhabi over 48
+                hours. It is completely free, thanks to our wonderful sponsors
+                and volunteers.
               </p>
-              <p>
-                You can check up on HackNYU 2019 from our twitter feed{" "}
-                <a href="https://twitter.com/hacknyu">here</a>.
-              </p>
-              <p>We hope to see you next year!</p>
-              <p>All the best,</p>
+              <p>We hope to see you there!</p>
             </div>
           </tr>
           <tr>
@@ -72,7 +81,6 @@ const renderRejectedEmail = (name: string) => {
       </p>
     </div>
   );
-  return body;
 };
 
-export default renderRejectedEmail;
+export default AdmittedEmail;
