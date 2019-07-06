@@ -3,13 +3,7 @@
   "scripts": {
     "lint": "tslint --project tsconfig.json",
     "build": "tsc",
-    "serve": "npm run build && firebase serve --only functions",
-    "test-server": "npm run build && node lib/server.js",
-    "send-rejections": "npm run build && node lib/sendRejectionEmails.js",
-    "shell": "npm run build && firebase functions:shell",
-    "start": "npm run shell",
-    "deploy": "firebase deploy --only functions",
-    "logs": "firebase functions:log"
+    "dev": "npm run build && node lib/server.js"
   },
   "main": "lib/index.js",
   "dependencies": {

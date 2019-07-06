@@ -2,10 +2,11 @@ import * as React from "react";
 
 interface Props {
   resetKey: string;
+  domain: string;
 }
 
-const ResetPasswordEmail: React.FunctionComponent<Props> = ({ resetKey }) => {
-  const resetUrl = `https://hacknyu.org/reset?key=${resetKey}`;
+const ResetPasswordEmail: React.FunctionComponent<Props> = ({ resetKey, domain }) => {
+  const resetUrl = `${domain}/reset-password/${resetKey}`;
   return (
     <div
       style={{
@@ -50,8 +51,8 @@ const ResetPasswordEmail: React.FunctionComponent<Props> = ({ resetKey }) => {
           <tr>
             <div style={{ padding: "40px", fontSize: "1.1em" }}>
               <p>
-                Forgot your password? Click
-                <a href={resetUrl}> here </a> to
+                Forgot your password? Click 
+                <a href={resetUrl}>here</a> to
                 reset it.
                 Or copy this link {resetUrl} into your address bar.
               </p>
